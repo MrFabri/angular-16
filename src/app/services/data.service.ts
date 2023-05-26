@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-interface User {
+export interface User {
   id: number;
   name: string;
   username: string;
@@ -20,23 +21,23 @@ export class DataService {
   private api = 'https://646666a7ba7110b6639fe850.mockapi.io/api';
   private http = inject(HttpClient); /* Works from angular 15 */
 
-  getUsers() {
-    this.http.get(this.api);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.api}/users`);
   }
 
-  getUser(id: number) {
-    this.http.get(`${this.api}/${id}`);
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.api}/${id}`);
   }
 
-  createUser(user: User) {
-    this.http.post(this.api, user);
+  createUser(user: User): Observable<any> {
+    return this.http.post(this.api, user);
   }
 
-  updateUser(id: number, user: User) {
-    this.http.put(`${this.api}/${id}`, user);
+  updateUser(id: number, user: User): Observable<any> {
+    return this.http.put(`${this.api}/${id}`, user);
   }
 
-  deleteUser(id: number) {
-    this.http.delete(`${this.api}/${id}`);
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/${id}`);
   }
 }
