@@ -1,4 +1,7 @@
-<div *ngFor="let user of users">
-    <p>{{user.name}}</p>
-    <p>{{user.email}}</p>
+<div *ngFor="let user of users" class="user-list">
+    <div class="user">
+        <h3>{{user.name}}</h3>
+        <p>{{user.email}}</p>
+        <p>{{user.id}}</p>
+    </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { User, DataService } from '@services/data.service';
 
 @Component({
@@ -8,8 +8,7 @@ import { User, DataService } from '@services/data.service';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
-
-  constructor(private dataService: DataService) {}
+  private dataService = inject(DataService);
 
   ngOnInit() {
     this.loadItems();

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface User {
   id: number;
@@ -19,25 +19,34 @@ export interface User {
 })
 export class DataService {
   private api = 'https://646666a7ba7110b6639fe850.mockapi.io/api';
-  private http = inject(HttpClient); /* Works from angular 15 */
+  private http = inject(HttpClient); /* Works from angular v15 */
+  private message: BehaviorSubject<string> = new BehaviorSubject('Hello!');
+
+  get messageSubject(): Observable<string> {
+    return this.message.asObservable();
+  }
+
+  set editMessageSubject(newMessage: string) {
+    this.message.next(newMessage);
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.api}/users`);
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>(`${this.api}/${id}`);
+    return this.http.get<User>(`${this.api}/users/${id}`);
   }
 
   createUser(user: User): Observable<any> {
-    return this.http.post(this.api, user);
+    return this.http.post(`${this.api}/users/`, user);
   }
 
   updateUser(id: number, user: User): Observable<any> {
-    return this.http.put(`${this.api}/${id}`, user);
+    return this.http.put(`${this.api}/users/${id}`, user);
   }
 
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.api}/${id}`);
+    return this.http.delete(`${this.api}/users/${id}`);
   }
 }
