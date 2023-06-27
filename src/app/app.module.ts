@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
 import { SubcompComponent } from './components/subcomp/subcomp.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { SubcompComponent } from './components/subcomp/subcomp.component';
     AppComponent,
     UserListComponent,
     HomeComponent,
-    AboutComponent,
     SubcompComponent,
   ],
   imports: [
