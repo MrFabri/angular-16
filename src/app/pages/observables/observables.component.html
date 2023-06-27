@@ -1,0 +1,26 @@
+<br>
+<h2>Cold observable</h2>
+<b>HTTP request</b>
+<div *ngIf="(user$ | async) as user; else error">
+    <p>Name: {{ user.name}}</p>
+    <img [src]="user.avatar" alt="avatar" width="50" height="50">
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone }}</p>
+</div>
+
+<ng-template #error>
+    <p>Bad request</p>
+</ng-template>
+
+<br>
+<br>
+
+<h2>Hot Obeservable</h2>
+<p>Value changes in both components</p>
+<input type="text" name="message" id="message" [(ngModel)]="subject">
+<button (click)="updateSubject()">Update</button>
+<br>
+<h2>First Component:
+    {{ subjectMessage$ | async  }}
+</h2>
+<app-subcomp></app-subcomp>

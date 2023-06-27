@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SubcompComponent } from './components/subcomp/subcomp.component';
+import { ObservablesComponent } from './pages/observables/observables.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SubcompComponent } from './components/subcomp/subcomp.component';
     UserListComponent,
     HomeComponent,
     SubcompComponent,
+    ObservablesComponent,
   ],
   imports: [
     BrowserModule,

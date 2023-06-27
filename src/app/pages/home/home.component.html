@@ -1,6 +1,5 @@
-<!-- <app-user-list /> -->
-
 <!-- Counter -->
+<br>
 <h2>Counter: {{ counter }}</h2>
 <button (click)="increment()">
     Increment
@@ -10,14 +9,21 @@
 </button>
 
 <br>
+<br>
+
 <h2>Form</h2>
 <p>Value: {{form.value | json}}</p>
 <p>Valid: {{form.valid | json}}</p>
+<br>
 <form [formGroup]="form" (ngSubmit)="submit()">
     <label for="name">Name: </label>
     <input id="name" type="text" formControlName="firstName">
 
+    <br>
+
     <label for="last-name">Last Name: </label>
     <input id="last-name" type="text" formControlName="lastName">
+
+    <br>
     <button type="submit" [disabled]="!form.valid">Submit</button>
 </form>

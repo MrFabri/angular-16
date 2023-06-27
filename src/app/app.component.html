@@ -1,25 +1,18 @@
 <nav>
     <ul>
-        <a routerLink="/">Home</a>
-        <a routerLink="/about">About</a>
+        <li>
+            <a routerLink="/">Home</a>
+        </li>
+        <li>
+            <a routerLink="/about">About</a>
+        </li>
+        <li>
+            <a routerLink="/observables">Observables</a>
+        </li>
     </ul>
 </nav>
 
+<br>
+<hr>
+
 <router-outlet></router-outlet>
-
-<br>
-<hr>
-
-<h2>Cold observable</h2>
-<p>{{ (user$ | async )?.name }}</p>
-<br>
-<hr>
-<br>
-
-<h2>Hot Obeservable</h2>
-<input type="text" name="message" id="message" [(ngModel)]="subject">
-<button (click)="updateSubject()">Update</button>
-<h2>App Component:
-    {{ subjectMessage$ | async  }}
-</h2>
-<app-subcomp></app-subcomp>
